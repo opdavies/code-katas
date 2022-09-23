@@ -1,0 +1,14 @@
+default:
+  just --list
+
+clean:
+  rm *.js -f
+
+compile: clean
+  tsc *.ts
+
+test: compile
+  jest *.test.js
+
+test-watch:
+  ls *.ts | entr -r just test
