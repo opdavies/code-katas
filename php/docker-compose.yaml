@@ -1,0 +1,6 @@
+services:
+  php:
+    build: .
+    volumes:
+      - ./:/app
+    command: "bash"

@@ -1,0 +1,16 @@
+# List all recipes.
+default:
+  just --list
+
+# Run a Composer command.
+composer *args:
+  docker compose run --rm -it php composer {{ args }}
+
+# Run tests with Pest.
+test *args:
+  clear
+  docker compose run --rm -it php pest {{ args }}
+
+# Run tests with Pest and watch for changes.
+test-watch *args:
+  find src tests -type f | entr just test {{ args }}
